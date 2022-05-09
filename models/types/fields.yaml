@@ -1,0 +1,22 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: right
+        defaultFrom: name
+        preset:
+            field: name
+            type: slug
+        type: text
+    sort_order:
+        label: 'Sort order'
+        span: auto
+        type: number
+    description:
+        label: 'pensoft.externaldocuments::lang.plugin.description'
+        size: large
+        span: auto
+        type: richeditor

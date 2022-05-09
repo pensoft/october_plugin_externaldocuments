@@ -1,0 +1,27 @@
+{% for group in folder.getChildren() %}
+<div id="delete_result_{{group.id}}">
+	<div id="accordion-external_documents" class="text-left relative ui-accordion ui-widget ui-helper-reset">
+
+		<h3 class="accordion-toggle subfolder_files">
+			<span id="tipContainer{{group.id}}"><span id="folderName-{{ group.id }}">{% partial __SELF__ ~ '::_folder_name' name=group.name %}</span></span>
+			<div class="plusminus"><span class="plus"></span></div>
+
+			<script>
+				initRightclickRenameFolderTippy('{{group.id}}', '{{(user.id > 0)}}');
+			</script>
+			{% partial __SELF__ ~ '::_popup-edit-folder_name-form' subfolder=group %}
+		</h3>
+
+		<div class="accordion-content subfolders mb-1" style="display: none;">
+			<div id="sortableFolders{{group.id}}" class="depth_{{group.nest_depth}}">
+				{% partial __SELF__ ~ '::_subfolders_list' folder=group %}
+			</div>
+
+			<div id="files_list_{{ group.id }}">
+				{% partial __SELF__ ~ '::_files_list' folder=group group_id=group.id %}
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endfor %}

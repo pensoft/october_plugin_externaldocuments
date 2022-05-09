@@ -1,0 +1,10 @@
+name: Folders
+form: $/pensoft/externaldocuments/models/folders/fields.yaml
+modelClass: Pensoft\ExternalDocuments\Models\Folders
+defaultRedirect: pensoft/externaldocuments/folders
+create:
+    redirect: 'pensoft/externaldocuments/folders/update/:id'
+    redirectClose: pensoft/externaldocuments/folders
+update:
+    redirect: pensoft/externaldocuments/folders
+    redirectClose: pensoft/externaldocuments/folders

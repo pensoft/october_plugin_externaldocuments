@@ -1,0 +1,35 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: right
+        defaultFrom: name
+        preset:
+            field: name
+            type: slug
+        type: text
+    type:
+        label: Type
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+    parent:
+        label: 'Parent folder'
+        emptyOption: 'NO Parent Folder'
+        showSearch: true
+        span: auto
+        defaultFrom: name
+        type: relation
+    files:
+        label: Files
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

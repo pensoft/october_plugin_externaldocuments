@@ -1,0 +1,17 @@
+columns:
+    name:
+        label: name
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: slug
+        type: text
+        searchable: true
+        sortable: true
+    type_id:
+        label: Type
+        relation: type
+        select: name
+        searchable: true
+        sortable: true
