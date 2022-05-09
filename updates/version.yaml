@@ -6,3 +6,5 @@
 1.0.3:
     - 'Created table pensoft_externaldocuments_types'
     - builder_table_create_pensoft_externaldocuments_types.php
+1.0.4:
+    - 'composer json'
