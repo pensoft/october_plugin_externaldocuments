@@ -1,8 +1,8 @@
 {
-    "name": "pensoft/externaldocuments-plugin",
-    "type": "october-plugin",
-    "description": "None",
-    "require": {
-        "composer/installers": "~1.0"
-    }
+  "name": "pensoft/externaldocuments-plugin",
+  "type": "october-plugin",
+  "description": "None",
+  "require": {
+	"composer/installers": "~1.0"
+  }
 }
