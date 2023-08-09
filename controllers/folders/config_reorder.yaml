@@ -1,4 +1,0 @@
-title: Folders
-modelClass: Pensoft\ExternalDocuments\Models\Folders
-toolbar:
-    buttons: reorder_toolbar

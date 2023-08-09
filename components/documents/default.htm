@@ -1,0 +1,4 @@
+{% for document in external_documents %}
+    {% partial 'components/external_documents' record=document %}
+{% endfor %}
+{{ external_documents.render|raw }}

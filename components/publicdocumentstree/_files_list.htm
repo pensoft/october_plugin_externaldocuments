@@ -1,7 +1,0 @@
-<p>
-	{% if folder.files.count %}
-		<div id="sortableFiles{{folder.id}}">
-			{% partial '@documents-files' files=folder.files group_id=folder.id %}
-		</div>
-	{% endif %}
-</p>
