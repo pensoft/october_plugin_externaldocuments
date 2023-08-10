@@ -16,3 +16,5 @@
     - 'Latest changes'
 1.0.9:
     - 'Latest changes'
+1.0.10:
+    - 'Insert into journal_users table after registration'

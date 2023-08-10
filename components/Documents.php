@@ -95,9 +95,9 @@ class Documents extends ComponentBase
         ];
     }
 
-    public function encryptStringUrl($documentId){
+    public function encryptStringUrl($documentId, $userId){
 
-        $string = 'document_id=' . $documentId . '&action=invite_and_review_panel';
+        $string = 'document_id=' . (int)$documentId . '&user_id=' . (int)$userId . '&action=invite_and_review_panel';
 
         $encrypted_string = openssl_encrypt($string, getenv('OPENSSL_CYPHERING'), getenv('OPENSSL_ENCRYPTION_KEY'), 0, getenv('OPENSSL_ENCRYPTION_IV'));
 
