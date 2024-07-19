@@ -1,4 +1,8 @@
+{% if external_documents.count > 0 %}
 {% for document in external_documents %}
     {% partial 'components/external_documents' record=document %}
 {% endfor %}
 {{ external_documents.render|raw }}
+{% else %}
+<p align="center">There are currently no documents available for review</p>
+{% endif %}
