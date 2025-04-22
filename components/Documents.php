@@ -22,7 +22,7 @@ class Documents extends ComponentBase
     {
         $this->page['external_documents'] = DB::connection($this->property('externalLibrary'))
             ->table('pjs.documents as d')
-            ->selectRaw('d.id as document_id, d.name->>\'en\' as name, d.subject_categories,
+            ->selectRaw('d.id as document_id, d.name->>\'en\' as name, d.subject_categories, d.panel_duedate,
             (SELECT aggr_concat_coma(a.author_name)
 							FROM (
 								SELECT (user_full_name(du.first_name->>\'en\', \'\', du.last_name->>\'en\')) as author_name
@@ -108,4 +108,48 @@ class Documents extends ComponentBase
 
 
     }
+
+
+
+    public function calculatePanelDueDateDays($pDate){
+
+        $nowDate = \DateTime::createFromFormat('Y-m-d', date("Y-m-d"))->setTime(0, 0);
+        $duedate = \DateTime::createFromFormat('Y-m-d H:i:s.u', $pDate);
+        if(!$duedate) {
+            $duedate = \DateTime::createFromFormat('Y-m-d H:i:s', $pDate)->setTime(3, 0);
+        } else {
+            $duedate->setTime(3, 0);
+        }
+
+        $duedateDate = new \DateTime($duedate->format("Y-m-d"));
+        if($nowDate <= $duedateDate) {
+            $lResArr['flag'] = 1;
+            $lResArr['datediff'] = $nowDate->diff($duedate)->format('%a');
+        } else {
+            $lResArr['flag'] = 2;
+            $lResArr['datediff'] = $duedateDate->diff($nowDate)->format('%a');
+        }
+
+        if($lResArr['datediff'] > 0) {
+            $lResArr['datediff'] .= ' day' . $this->plural($lResArr['datediff']);
+        } else {
+            $nowDate = \DateTime::createFromFormat('Y-m-d', date("Y-m-d"));
+            if($nowDate > $duedate) {
+                $lResArr['flag'] = 2;
+            } else {
+                $lResArr['flag'] = 1;
+            }
+            $lResArr['datediff'] = $nowDate->diff($duedate)->format('%h') . ' hour' . $this->plural($nowDate->diff($duedate)->format('%h'));
+        }
+        if($lResArr['flag'] == 1) {
+            return $lResArr['datediff'];
+        }
+
+
+    }
+
+    function plural($n) {
+        return $n > 1 ? 's' : '';
+    }
+
 }
