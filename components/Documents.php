@@ -46,6 +46,7 @@ class Documents extends ComponentBase
             ')
             ->where('d.journal_id', (int)$this->property('journal'))
             ->where('d.state_id', 3) //in review
+            ->where('d.panel_duedate', '>=', DB::raw('now()')) // added duedate condition
             ->orderBy('d.id', 'desc')
             ->paginate((int)$this->property('paging'));
 
